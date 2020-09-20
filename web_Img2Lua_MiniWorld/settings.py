@@ -10,19 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 from pathlib import Path
-
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 AUTH_USER_MODEL = 'home.MyUser'
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-SECRET_KEY = config('6v7w5i0$!qx$bm71t!v7p2n#)drn*wzmj6saxwho2or43sqlu=')
-DEBUG = config('DEBUG', default=False, cast=bool)
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('postgres://hgztyyhzidqwlh:62235d0095d4aa996d0b8f27fc35c4925a73b3a05fafaf356a94d8f3ab70e78f@ec2-54-158-222-248.compute-1.amazonaws.com:5432/dc46v1cqg74750')
-    )
-}
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -129,3 +123,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+django_heroku.settings(locals())
