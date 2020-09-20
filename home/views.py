@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.db import models
 from home.models import MyUser
-from home.forms import AdminEdit,EditProfile
+from home.forms import AdminEdit,EditProfile,GetScript
 from django.http import HttpResponseRedirect 
 
 # Create your views here.
@@ -11,7 +11,15 @@ def index(request):
    return render(request, 'pages/home.html', User)
 
 def script(request):
-   return render(request, 'pages/script_create.html')
+   form=GetScript()
+   nick=request.user.username
+   if request.method == 'POST':
+      form=GetScript(request.POST)
+      if form.is_valid():
+         form.save(nick)
+      else:
+         form.save(nick)
+   return render(request, 'pages/script_create.html',{'form': form})
   # return render(request, 'pages/home.html')
 def admin(request):
    form = AdminEdit()

@@ -11,7 +11,6 @@
    <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
    <script src="{% static 'js/bootstrap.min.js' %}"></script>
    
-<script src="{% static 'js/app.js' %}"></script>
    <script type="text/javascript">
         window.oncontextmenu = function () {
             return false;
@@ -20,7 +19,7 @@
             if (event.keyCode == 123) {
                 return false;
             }
-            else if ((event.ctrlKey&&event.keyCode == 83)||(event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
+            else if ((event.ctrlKey)||(event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
                 return false;
             }
         });

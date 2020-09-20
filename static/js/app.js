@@ -57,11 +57,15 @@ function processImage(file) {
 
 
 function getcode() {
+ 
   console.log(canvas_review.width);
   if (img_review.src==location.href){
     alert("Vui lòng thêm ảnh!")
   }
   else{
+    document.getElementById('addpic').style.visibility = 'hidden';
+    
+    document.getElementById('trade').style.visibility = 'hidden'; 
     modal.style.display = "block";
     array=[]
     denta=60
@@ -129,13 +133,31 @@ function getcode() {
     for (m=0;m<array.length;m++) {
       lib=lib+"{stt="+array[m]+",id="+check[array[m]].id+",data="+check[array[m]].data+"},"
     }
+    var d = new Date();
+    day=d.getDate()+2
+    month=d.getMonth()
+    if ((month==2)||(month==4)||(month==6)||(month==9)||(month==11)){
+      if (day==29){
+        day=1;
+        month=month+1;
+      }
+      else if (day==30){
+        day=2;
+        month=month+1
+      }
+    }
     lib="{"+lib+"0}"
-    a="local Block = class.Block.new()\nclick=true\nfunction ok(param)\nx=param.x+1\ny=param.y+1\nz=param.z+1\nif click then\nclick=false\nlib="+lib+"\nmap="+text_val+"\ns_socot="+canvas_review.height+"\nsohang,socot=0,0\n"
+    a="local Block = class.Block.new()\nclick=true\nlocal day="+day+"\nlocal month="+month+"\nfunction ok(param)\nx=param.x+1\ny=param.y+1\nz=param.z+1\nif (click)and((os.date ('%d')*1<day*1)or(os.date ('%m')*1<=month*1)) then\nclick=false\nlib="+lib+"\nmap="+text_val+"\ns_socot="+canvas_review.height+"\nsohang,socot=0,0\n"
 b="for i=1,#map do\nlocal vitri_lib\nfor j=1,#lib-1 do\n if map[i]==lib[j].stt then\nvitri_lib=j\nbreak\nend\nend\nBlock:setBlockAll(x-socot,y,z+sohang,lib[vitri_lib].id,lib[vitri_lib].data)\n"
 c="if i%s_socot==0 then\nsocot=socot+1\nsohang=0\nelse\nsohang=sohang+1\nend\nend\nend\nend\nScriptSupportEvent:registerEvent([=[Player.ClickBlock]=],ok)"
 
-    textcode.innerHTML=a+b+c
-
+ddd=a+b+c
+eee="function getStr(str) local b='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=' str= string.gsub(str, '[^'..b..'=]', '') return (str:gsub('.', function(x) if (x == '=') then return '' end error=b local r,f,io='',(b:find(x)-1) for i=6,1,-1 do print,r=nil,r..(f%2^i-f%2^(i-1)>0 and '1' or '0') end return r; end):gsub('%d%d%d?%d?%d?%d?%d?%d?', function(x) if (#x ~= 8) then return '' end local c=0 for i=1,8 do c=c+(x:sub(i,i)=='1' and 2^(8-i) or 0) end return string.char(c) end)) end\n"
+fff="loadstring(getStr(key))()"    
+ggg="key='"+window.btoa(ddd)+"'"
+textcode.innerHTML=eee+ggg+"\n"+fff;
+    document.getElementById('copy').style.visibility = 'visible';
+  
  }
 
 

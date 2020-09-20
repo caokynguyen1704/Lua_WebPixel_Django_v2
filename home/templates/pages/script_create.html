@@ -6,18 +6,19 @@ Script Creation
 
 {% block menu %}
 {% if user.luot > 0 %}
-<input type='file' onchange="processImage(this);" />
+<input id="addpic" type='file' onchange="processImage(this);" />
 		<center>
 		<div style="background-color: white; width: 40%;">
 			<center>
 			<p  style="font-size: 80%;">
 				<i>Chiều dài gốc: </i><b id="width_img">0</b> px 
-				&nbsp;&nbsp;
+			<br>
 				<i>Chiều rộng gốc: </i><b id="height_img">0</b> px
 			</p>
+            <hr>
 			<p  style="font-size: 80%;">
 				<i>Chiều dài </i><b id="width_img_auto">0</b> px 
-				&nbsp;&nbsp;
+			<br>
 				<i>Chiều rộng: </i><b id="height_img_auto">0</b> px
 			</p>
 			</center>
@@ -28,9 +29,26 @@ Script Creation
 			<br>
 			
 			<br>
-			<button class="btn btn-light" onclick="getcode()">Chuyển sang script</button>
+            
+			        <button id="trade" class="btn btn-danger" onclick="getcode()">Chuyển sang script</button>
+            
 			<br>
-			<textarea id="code" cols="100%" rows="15%">Add Image and copy code in here!</textarea>
+            
+			<textarea id="code"  rows="1"></textarea><br>
+            <form action="." method="POST">
+                {% csrf_token %}
+                <button id="copy" type="submit" class="btn btn-warning"onclick="copyHere()" style="visibility:hidden;">COPY SCRIPT</button>
+            </form>
+           <script>
+                function copyHere() {
+  var copyText = document.getElementById("code");
+  copyText.select();
+  copyText.setSelectionRange(0, 999999999); 
+  document.execCommand("copy");
+  alert("Copied!!!");
+  return true;
+    }
+        </script>
 		</center>
 	</div>
 	<hr>
@@ -41,11 +59,17 @@ Script Creation
 
 
 <div id="myModal" class="modal">
-
-  <!-- Modal content -->
   <div class="modal-content">
-   <!-- <span class="close" onclick="clickSpan()">&times;</span>-->
-    <progress id="loading" max="100" value="0" >Loading...</progress>
+    Vui lòng không tắt hay làm mới trang đột ngột.
+    <br>
+    Chúng tôi không chịu tránh nhiệm về việc này!
+    <br>
+    Khi quá trình load hoàn tất
+    <br>
+    Vui lòng copy script và tự lưu lại
+    <br>
+    Waiting Loading...
+    <progress id="loading" max="100" value="0" width="100%">Loading...</progress>
   </div>
 </div>
     <script src="{% static 'js/data.json' %}"></script>

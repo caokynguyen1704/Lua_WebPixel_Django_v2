@@ -52,3 +52,8 @@ class EditProfile(forms.Form):
         user.email=self.cleaned_data['email']
         user.uid=self.cleaned_data['uid']
         user.save()
+class GetScript(forms.Form):
+    def save(self,nick):
+        user=MyUser.objects.get(username=nick)
+        user.luot=user.luot-1
+        user.save()
