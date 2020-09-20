@@ -16,5 +16,5 @@ from whitenoise.django import DjangoWhiteNoise
 
 application = DjangoWhiteNoise(application)
 #application = get_wsgi_application()
-
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "web_Img2Lua_MiniWorld.settings.settings")
 
