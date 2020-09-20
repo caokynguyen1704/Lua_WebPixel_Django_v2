@@ -1,0 +1,54 @@
+{% extends "pages/base.html" %}
+{% load static %}
+{% block title %}
+Script Creation
+{% endblock %}
+
+{% block menu %}
+{% if user.luot > 0 %}
+<input type='file' onchange="processImage(this);" />
+		<center>
+		<div style="background-color: white; width: 40%;">
+			<center>
+			<p  style="font-size: 80%;">
+				<i>Chiều dài gốc: </i><b id="width_img">0</b> px 
+				&nbsp;&nbsp;
+				<i>Chiều rộng gốc: </i><b id="height_img">0</b> px
+			</p>
+			<p  style="font-size: 80%;">
+				<i>Chiều dài </i><b id="width_img_auto">0</b> px 
+				&nbsp;&nbsp;
+				<i>Chiều rộng: </i><b id="height_img_auto">0</b> px
+			</p>
+			</center>
+		</div>
+		</center>
+		<center>
+			<img id="myImg" src=""  width="70%">
+			<br>
+			
+			<br>
+			<button class="btn btn-light" onclick="getcode()">Chuyển sang script</button>
+			<br>
+			<textarea id="code" cols="100%" rows="15%">Add Image and copy code in here!</textarea>
+		</center>
+	</div>
+	<hr>
+	<center>
+		<canvas id="review"></canvas>
+		<canvas id="view"></canvas>
+	</center>
+
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+   <!-- <span class="close" onclick="clickSpan()">&times;</span>-->
+    <progress id="loading" max="100" value="0" >Loading...</progress>
+  </div>
+</div>
+    <script src="{% static 'js/data.json' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+{% endif %}
+{% endblock %}

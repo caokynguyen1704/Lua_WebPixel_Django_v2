@@ -7,12 +7,53 @@
    <!--Load CSS-->
    {% load static %}
    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+   <script src="{% static 'js/popper.min.js' %}"></script>
+   <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
+   <script src="{% static 'js/bootstrap.min.js' %}"></script>
+   
+<script src="{% static 'js/app.js' %}"></script>
+   <script type="text/javascript">
+        window.oncontextmenu = function () {
+            return false;
+        }
+        $(document).keydown(function (event) {
+            if (event.keyCode == 123) {
+                return false;
+            }
+            else if ((event.ctrlKey&&event.keyCode == 83)||(event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
+                return false;
+            }
+        });
+    </script>
    <!--Finish load CSS-->
    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-   {% block content %}
+
+<nav class="navbar navbar-dark bg-dark">
+   <a class="navbar-brand" href="/">DevMini</a>
+   <ul class="navbar-nav">
+   
+{% if user.username %}
+   <!--if is login-->
+      <li class="nav-item active" width="12px">
+         <a class="nav-link" href="{% url "logout" %}"><img src="{% static "icon/person-x-fill.svg" %}" width="30px" /> Log Out</a>
+      </li>
+   <!--end login-->
+{% endif %}
+   </ul>  
+</nav>
+<div class="container">
+
+{% if user.username %}
+   {% block menu %}
   
    {% endblock %}
+{% else %}
+   {% block login %}
+  
+   {% endblock %}
+{% endif %}
+</div>
 </body>
 </html>

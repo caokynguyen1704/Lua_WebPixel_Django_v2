@@ -1,0 +1,76 @@
+{% extends "pages/base.html" %}
+
+{% block title %}
+Trang Quản Trị
+{% endblock %}
+
+
+{% block menu %}
+{% if user.isAdmin %}
+<!--List User-->
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Email</th>
+      <th scope="col">Username</th>
+      <th scope="col">Name</th>
+      <th scope="col">Uid</th>
+      <th scope="col">Lượt</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for name in MyUser %}
+    <tr>
+      <td>{{name.id}}</td>
+      <td>{{name.email}}</td>
+      <td>{{name.username}}</td>
+      <td>{{name.name}}</td>
+      <td>{{name.uid}}</td>
+      <td>{{name.luot}}</td>
+    </tr>
+    {% endfor %} 
+  </tbody>
+</table>
+<!--List User end-->
+
+<form action="." method="POST" enctype="multipart/form-data"> 
+    {% csrf_token %}
+	     <div class="class="form-group"">
+        <label>Chức Năng:</label>
+        <select class="custom-select mr-sm-2" onchange="changeName(this.value)" required>
+            <option selected>Vui lòng chọn
+            <option value="name">Sửa Tên
+            <option value="uid">Sửa UID
+            <option value="luot">Sửa Lượt
+            <option value="username">Tên Đăng Nhập
+            <option value="password">Mật Khẩu
+            <option value="email">Email
+        </select>
+    </div>
+
+    <input class="id_class" name="_id" onchange="checkNum(this.value)" type="text" class="form-control"  placeholder="Nhập ID" required>
+    <script>
+    function checkNum(value){
+      var value = $('.id_class').val();
+      if(parseInt(value)) {
+        
+      }
+      else {
+        value=null;
+        alert("Vui lòng nhập ID là số");
+      } 
+    }
+    </script>
+    <input class="text_value" type="text" class="form-control" placeholder="Giá Trị" required>
+
+	<button type="submit" class="btn btn-primary">Thay Đổi</button>
+</form>
+    <script>
+      function changeName(val) {
+        var text=document.querySelector(".text_value");
+        text.setAttribute("name", val);    
+      }
+    </script>
+{% endif %}
+{% endblock %}
