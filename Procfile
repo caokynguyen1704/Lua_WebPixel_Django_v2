@@ -1,0 +1,1 @@
+web: gunicorn web_Img2Lua_MiniWorld.wsgi
