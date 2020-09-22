@@ -5,6 +5,12 @@ Script Creation
 {% endblock %}
 
 {% block menu %}
+<script>
+window.onload = function()
+{
+    location.reload();
+};
+</script>
 {% if user.luot > 0 %}
 <input id="addpic" type='file' onchange="processImage(this);" />
 		<center>
