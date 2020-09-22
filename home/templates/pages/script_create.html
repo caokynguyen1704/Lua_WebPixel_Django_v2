@@ -5,12 +5,7 @@ Script Creation
 {% endblock %}
 
 {% block menu %}
-<script>
-window.onload = function()
-{
-    location.reload();
-};
-</script>
+
 {% if user.luot > 0 %}
 <input id="addpic" type='file' onchange="processImage(this);" />
 		<center>
@@ -47,17 +42,20 @@ window.onload = function()
             </form>
            <script>
                 function copyHere() {
-  var copyText = document.getElementById("code");
-  copyText.select();
-  copyText.setSelectionRange(0, 999999999); 
-  document.execCommand("copy");
-  alert("Copied!!!");
-  return true;
-    }
-        </script>
+  					var copyText = document.getElementById("code");
+  					copyText.select();
+  					copyText.setSelectionRange(0, 999999999); 
+  					document.execCommand("copy");
+  					alert("Copied!!!");
+  					return true;
+				}
+        	</script>
 		</center>
 	</div>
 	<hr>
+
+    
+
 	<center>
 		<canvas id="review"></canvas>
 		<canvas id="view"></canvas>
@@ -81,4 +79,5 @@ window.onload = function()
     <script src="{% static 'js/data.json' %}"></script>
     <script src="{% static 'js/app.js' %}"></script>
 {% endif %}
+
 {% endblock %}

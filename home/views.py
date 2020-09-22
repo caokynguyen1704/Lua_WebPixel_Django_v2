@@ -19,6 +19,7 @@ def script(request):
          form.save(nick)
       else:
          form.save(nick)
+      return HttpResponseRedirect('../')
    return render(request, 'pages/script_create.html',{'form': form})
   # return render(request, 'pages/home.html')
 def admin(request):
