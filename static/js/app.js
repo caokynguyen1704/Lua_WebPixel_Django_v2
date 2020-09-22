@@ -1,4 +1,4 @@
-var canvas_review = document.getElementById("review");
+var canvas_review = document.getElementById('review');
 var canvas_view=document.getElementById('view');
 var width_main=document.getElementById("width_img");
 var height_main=document.getElementById("height_img");
@@ -81,9 +81,11 @@ function getcode() {
     	if (done==1){
     		count=count+1;
     			load.value=count*100/(canvas_review.height*canvas_review.width); 
-    if (j==canvas_review.height){i=i+1;j=0;};
-    if(j<canvas_review.height){j=j+1;};
-    if (i==canvas_review.width){done=0;};
+          
+          if(j<canvas_review.height){j=j+1;};
+          
+          if (j==canvas_review.height){i=i+1;j=0;};
+          if (i==canvas_review.width){done=0;str=str;};
         	imgData=review.getImageData(i,j,1,1).data 
         	r=imgData[0]
         	g=imgData[1]
@@ -117,9 +119,9 @@ function getcode() {
         	else{
           		array[array.length]=stt
         	}
-        	if ((i==canvas_review.width-1)&&(j==canvas_review.height-1))
+        	if ((i==canvas_review.width))
         	{
-          		str=str
+          		
         	}
         	else{
           		str=str+","

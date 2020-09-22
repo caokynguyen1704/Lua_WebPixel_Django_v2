@@ -11,7 +11,7 @@
    <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
    <script src="{% static 'js/bootstrap.min.js' %}"></script>
    
-   <script type="text/javascript">
+<script type="text/javascript">
         window.oncontextmenu = function () {
             return false;
         }
@@ -48,11 +48,14 @@
    {% block menu %}
   
    {% endblock %}
+
 {% else %}
    {% block login %}
   
    {% endblock %}
+
 {% endif %}
 </div>
+
 </body>
 </html>

@@ -5,8 +5,14 @@ Script Creation
 {% endblock %}
 
 {% block menu %}
-
+     <center>
+		<canvas id="review"></canvas>
+		<canvas id="view"></canvas>
+	</center>
 {% if user.luot > 0 %}
+ {% load static %}
+<script src="{% static 'js/data.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
 <input id="addpic" type='file' onchange="processImage(this);" />
 		<center>
 		<div style="background-color: white; width: 40%;">
@@ -56,10 +62,7 @@ Script Creation
 
     
 
-	<center>
-		<canvas id="review"></canvas>
-		<canvas id="view"></canvas>
-	</center>
+
 
 
 <div id="myModal" class="modal">
@@ -79,5 +82,5 @@ Script Creation
     <script src="{% static 'js/data.json' %}"></script>
     <script src="{% static 'js/app.js' %}"></script>
 {% endif %}
-
+	
 {% endblock %}
