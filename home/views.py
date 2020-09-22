@@ -50,5 +50,5 @@ def edit_profile(request):
       form=EditProfile(request.POST)
       if form.is_valid():
          form.save(nick)
-         return HttpResponseRedirect('../')
+      return HttpResponseRedirect('/')
    return render(request, 'pages/editprofile.html', {'form': form})
