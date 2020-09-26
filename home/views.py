@@ -6,6 +6,8 @@ from django.http import HttpResponseRedirect
 
 # Create your views here.
 from django.http import HttpResponse
+def giveaway(request):
+   return render(request, 'pages/acc_free.html')
 def index(request):
    User = {'MyUser': MyUser.objects.all()}
    return render(request, 'pages/home.html', User)

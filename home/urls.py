@@ -8,4 +8,5 @@ urlpatterns = [
    path('qtv/', views.admin,name="qtv"),
    path('information/',views.edit_profile,name="edit_profile"),
    path('script/',views.script,name="script"),
+   path('giveaway/',views.giveaway,name="giveaway"),
 ]

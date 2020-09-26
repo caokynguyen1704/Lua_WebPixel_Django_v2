@@ -1,0 +1,23 @@
+{% extends "pages/base.html" %}
+{% load static %}
+{% block title %}
+Give Aways
+{% endblock %}
+
+{% block login %}
+
+   <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+
+<button onclick="getIP()">Click me</button>
+    <script>
+function getIP(){
+$.getJSON('http://ip.jsontest.com/?callback=?', function(data) {
+        console.log(JSON.stringify(data['ip'], null, 2));
+    });
+}
+$(window).load(function() {
+getIP();
+      
+});
+    </script>
+{% endblock %}
