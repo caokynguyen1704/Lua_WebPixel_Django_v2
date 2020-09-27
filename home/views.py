@@ -68,8 +68,10 @@ def napthe(request):
          sign=form.getSign(nick)
          url = 'https://ppay.vn/chargingws/v2'
          user=MyUser.objects.get(username=nick)
-         madonhang= str(user.id)+"code"+str(user.madonhang)
          
+         madonhang= str(user.id)+"code"+str(user.madonhang)
+         user.madonhang=user.madonhang+1
+         user.save()
          postdata = {
             "request_id":madonhang,
             "partner_id":"3850690061",
@@ -81,7 +83,7 @@ def napthe(request):
             "sign":sign
          }
          r = requests.post(url, data=postdata)
-         user.madonhang=user.madonhang+1
+         
          print(r.status_code)
          json_return=r.json()
          print(json_return)
