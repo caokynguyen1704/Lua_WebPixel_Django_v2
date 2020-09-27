@@ -19,9 +19,14 @@ def script(request):
    if request.method == 'POST':
       form=GetScript(request.POST)
       if form.is_valid():
-         form.save(nick)
-      else:
-         form.save(nick)
+         if form.cleaned_data.get('select')=="64":
+            form.save_64(nick)
+         elif form.cleaned_data.get('select')=="128":
+            form.save_128(nick)
+         elif form.cleaned_data.get('select')=="192":
+            form.save_192(nick)
+         elif form.cleaned_data.get('select')=="256":
+            form.save_256(nick)
       return HttpResponseRedirect('../')
    return render(request, 'pages/script_create.html',{'form': form})
   # return render(request, 'pages/home.html')

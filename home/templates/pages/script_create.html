@@ -13,7 +13,7 @@ Script Creation
 {% if user.luot > 0 %}
 {% if user.uid > 1000 %}
 <input type="hidden" class="uid" value={{user.uid}}>
-<input id="addpic" type='file' onchange="processImage(this);" />
+<input id="addpic" type='file' onchange="processImage(this,64);" />
 		<center>
 		<div style="background-color: white; width: 40%;">
 			<center>
@@ -44,6 +44,21 @@ Script Creation
 			<textarea id="code"  rows="1"></textarea><br>
             <form action="." method="POST">
                 {% csrf_token %}
+				<label for="cars">Chọn kích thước:</label>
+
+<select name="select" id="pixel">
+  <option value="64">64 pixel (-1)</option>
+  {% if user.luot >= 2 %}
+  <option value="128">128 pixel (-2)</option>
+  {% endif %}
+  {% if user.luot >= 3 %}
+  <option value="192">192 pixel (-3)</option>
+  {% endif %}
+  {% if user.luot >= 4 %}
+  <option value="256">256 pixel (-4)</option>
+  {% endif %}
+</select>
+
                 <button id="copy" type="submit" class="btn btn-warning"onclick="copyHere()" style="visibility:hidden;">COPY SCRIPT</button>
             </form>
            <script>

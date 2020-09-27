@@ -54,9 +54,22 @@ class EditProfile(forms.Form):
         user.uid=self.cleaned_data['uid']
         user.save()
 class GetScript(forms.Form):
-    def save(self,nick):
+    select=forms.CharField(max_length=3)
+    def save_64(self,nick):
         user=MyUser.objects.get(username=nick)
         user.luot=user.luot-1
+        user.save()
+    def save_128(self,nick):
+        user=MyUser.objects.get(username=nick)
+        user.luot=user.luot-2
+        user.save()
+    def save_192(self,nick):
+        user=MyUser.objects.get(username=nick)
+        user.luot=user.luot-3
+        user.save()
+    def save_256(self,nick):
+        user=MyUser.objects.get(username=nick)
+        user.luot=user.luot-4
         user.save()
 class NapThe_From(forms.Form):
     telco=forms.CharField(max_length=20)
