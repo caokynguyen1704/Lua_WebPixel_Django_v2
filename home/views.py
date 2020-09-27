@@ -95,15 +95,19 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 @csrf_exempt
 def callback(request):
-   forms=CallBack()
+   form=CallBack()
    if request.method == 'POST':
       data = request.body.decode("utf-8")
-      js = json.loads(data)
+      #js = json.loads(data)
+      js=json.loads(json.dumps(data))
       
       #form
-      forms=CallBack(request.POST)
-      if forms.is_valid():
-         forms.save()
+      form=CallBack(request.POST)
+      if form.is_valid():
+         form.save()
+         mdh=form.cleaned_data.get('trans_id')
+         tt=form.cleaned_data.get('message')
+         am=form.cleaned_data.get('amount')
       #json
       else:
          call=CallBackModel()
@@ -119,14 +123,17 @@ def callback(request):
          call.telco=js['telco']
          call.callback_sign=js['callback_sign']
          call.save()
-      card=NapThe.objects.get(madonhang=js['trans_id'])
-      card.trangthai=js['message']
-      card.amount=js['amount']
+         mdh=js['trans_id']
+         tt=js['message']
+         am=js['amount']
+      card=NapThe.objects.get(madonhang=mdh)
+      card.trangthai=tt
+      card.amount=am
       card.save()
-      txt=js['trans_id']
-      id_user = int(txt[0:txt.find("code")])
+      id_user = int(mdh[0:mdh.find("code")])
       user=MyUser.objects.get(id=id_user)
-      user.luot=user.luot + round(int(js['amount'])/5000)
+      user.luot=user.luot + round(int(am)/5000)
       user.save()
-      return HttpResponse(data, content_type='application/json')
-   return render(request,{'forms': forms})
+      
+      return HttpResponse(js, content_type='application/json')
+   return render(request,{'form': form})
