@@ -19,15 +19,15 @@ def script(request):
    if request.method == 'POST':
       form=GetScript(request.POST)
       if form.is_valid():
-         if form.cleaned_data.get('select')=="64":
+         if ((form.cleaned_data.get('select')=="64")and(request.user.luot>=1)):
             form.save_64(nick)
-         elif form.cleaned_data.get('select')=="128":
+         elif ((form.cleaned_data.get('select')=="128")and(request.user.luot>=2)):
             form.save_128(nick)
-         elif form.cleaned_data.get('select')=="192":
+         elif ((form.cleaned_data.get('select')=="192")and(request.user.luot>=3)):
             form.save_192(nick)
-         elif form.cleaned_data.get('select')=="256":
+         elif ((form.cleaned_data.get('select')=="256")and(request.user.luot>=4)):
             form.save_256(nick)
-         elif form.cleaned_data.get('select')=="500":
+         elif ((form.cleaned_data.get('select')=="500")and(request.user.luot>=4)):
             form.save_256(nick)
          else:
             form.save_hack(nick)
