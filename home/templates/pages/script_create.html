@@ -57,6 +57,11 @@ Script Creation
   {% if user.luot >= 4 %}
   <option value="256">256 pixel (-4)</option>
   {% endif %}
+  {% if user.luot >= 4 %}
+  	{% if user.id <= 4 %}
+  <option value="500">Only 500 PIXEL (-4)</option>
+  	{% endif %}
+  {% endif %}
 </select>
 
                 <button id="copy" type="submit" class="btn btn-warning"onclick="copyHere()" style="visibility:hidden;">COPY SCRIPT</button>
