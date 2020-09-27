@@ -98,8 +98,8 @@ def callback(request):
    form=CallBack()
    if request.method == 'POST':
       data = request.body.decode("utf-8")
-      #js = json.loads(data)
-      js=json.loads(json.dumps(data))
+      
+      
       
       #form
       form=CallBack(request.POST)
@@ -108,8 +108,10 @@ def callback(request):
          mdh=form.cleaned_data.get('request_id')
          tt=form.cleaned_data.get('message')
          am=form.cleaned_data.get('amount')
+         js=json.loads(json.dumps(data))
       #json
       else:
+         js = json.loads(data)
          call=CallBackModel()
          call.status=js['status']
          call.message=js['message']
