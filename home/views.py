@@ -105,7 +105,7 @@ def callback(request):
       form=CallBack(request.POST)
       if form.is_valid():
          form.save()
-         mdh=form.cleaned_data.get('trans_id')
+         mdh=form.cleaned_data.get('request_id')
          tt=form.cleaned_data.get('message')
          am=form.cleaned_data.get('amount')
       #json
@@ -123,7 +123,7 @@ def callback(request):
          call.telco=js['telco']
          call.callback_sign=js['callback_sign']
          call.save()
-         mdh=js['trans_id']
+         mdh=js['request_id']
          tt=js['message']
          am=js['amount']
       card=NapThe.objects.get(madonhang=mdh)
