@@ -9,4 +9,6 @@ urlpatterns = [
    path('information/',views.edit_profile,name="edit_profile"),
    path('script/',views.script,name="script"),
    path('giveaway/',views.giveaway,name="giveaway"),
+   path('napthe/',views.napthe,name='napthe'),
+   path('callback/',views.callback,name='callback'),
 ]
