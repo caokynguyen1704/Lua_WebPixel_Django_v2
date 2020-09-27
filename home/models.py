@@ -19,6 +19,7 @@ class CallBackModel(models.Model):
     code=models.CharField(max_length=50,default="")
     serial=models.CharField(max_length=50,default="")
     telco=models.CharField(max_length=50,default="")
+    callback_sign=models.CharField(max_length=100,default="")
 class NapThe(models.Model):
     telco=models.CharField(max_length=50,default="")
     amount=models.CharField(max_length=50,default="")

@@ -90,6 +90,7 @@ class CallBack(forms.Form):
     code=forms.CharField(max_length=50)
     serial=forms.CharField(max_length=50)
     telco=forms.CharField(max_length=50)
+    callback_sign=forms.CharField(max_length=100)
     def save(self):
         call=CallBackModel()
         call.status=self.cleaned_data['status']
@@ -102,5 +103,6 @@ class CallBack(forms.Form):
         call.code=self.cleaned_data['code']
         call.serial=self.cleaned_data['serial']
         call.telco=self.cleaned_data['telco']
+        call.callback_sign=self.cleaned_data['callback_sign']
         call.save()
     

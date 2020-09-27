@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.db import models
-from home.models import MyUser,CallBackModel
+from home.models import MyUser,CallBackModel,NapThe
 from home.forms import AdminEdit,EditProfile,GetScript,NapThe_From,CallBack
 from django.http import HttpResponseRedirect 
 import requests
@@ -48,14 +48,17 @@ def admin(request):
    return render(request, 'pages/admin.html',{'form': form,'MyUser': MyUser.objects.all()})
 
 def edit_profile(request):
+   
    form = EditProfile()
    nick=request.user.username
+   i_d=str(request.user.id)
+   napthe=NapThe.objects.extra(where=["madonhang like '0code%'"])
    if request.method == 'POST':
       form=EditProfile(request.POST)
       if form.is_valid():
          form.save(nick)
       return HttpResponseRedirect('/')
-   return render(request, 'pages/editprofile.html', {'form': form})
+   return render(request, 'pages/editprofile.html', {'form': form,'Card':NapThe.objects.extra(where=["madonhang like '"+i_d+"code%'"])})
 def napthe(request):
    form=NapThe_From()
    nick=request.user.username
@@ -113,7 +116,16 @@ def callback(request):
          call.code=js['code']
          call.serial=js['serial']
          call.telco=js['telco']
+         call.callback_sign=js['callback_sign']
          call.save()
-
+      card=NapThe.objects.get(madonhang=js['trans_id'])
+      card.trangthai=js['message']
+      card.amount=js['amount']
+      card.save()
+      txt=js['trans_id']
+      id_user = int(txt[0:txt.find("code")])
+      user=MyUser.objects.get(id=id_user)
+      user.luot=user.luot + round(int(js['amount'])/5000)
+      user.save()
       return HttpResponse(data, content_type='application/json')
    return render(request,{'forms': forms})

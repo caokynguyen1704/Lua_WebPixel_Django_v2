@@ -30,5 +30,30 @@ Sửa thông tin
     <input type="submit" value="Thay Đổi"/>
 </form>
             
-            
+<br>
+<hr>
+<!--List User-->
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Mã Giao Dịch</th>
+      <th scope="col">Số Seri</th>
+      <th scope="col">Loại Thẻ</th>
+      <th scope="col">Mệnh Gía</th>
+      <th scope="col">Tình Trạng</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for card in Card %}
+    <tr>
+      <td>{{card.madonhang}}</td>
+      <td>{{card.serial}}</td>
+      <td>{{card.telco}}</td>
+      <td>{{card.amount}}</td>
+      <td>{{card.trangthai}}</td>
+    </tr>
+    {% endfor %} 
+  </tbody>
+</table>
+<!--List User end-->
 {% endblock %}

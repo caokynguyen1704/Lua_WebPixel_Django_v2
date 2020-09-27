@@ -32,6 +32,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="{% url "edit_profile" %}">Thông Tin Cá Nhân</a>
+      <a class="nav-item nav-link" href="{% url "napthe" %}">Nạp Thẻ</a>
       {% if user.isAdmin %}
       <a class="nav-item nav-link" href="{% url 'qtv' %}">Quản Trị Viên</a>
       {% endif %}
