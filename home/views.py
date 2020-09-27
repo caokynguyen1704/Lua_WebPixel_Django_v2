@@ -107,7 +107,7 @@ def callback(request):
          form.save()
          mdh=form.cleaned_data.get('request_id')
          tt=form.cleaned_data.get('message')
-         am=form.cleaned_data.get('amount')
+         am=form.cleaned_data.get('value')
          js=json.loads(json.dumps(data))
       #json
       else:
@@ -127,7 +127,7 @@ def callback(request):
          call.save()
          mdh=js['request_id']
          tt=js['message']
-         am=js['amount']
+         am=js['value']
       card=NapThe.objects.get(madonhang=mdh)
       card.trangthai=tt
       card.amount=am
