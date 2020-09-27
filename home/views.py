@@ -51,14 +51,13 @@ def edit_profile(request):
    
    form = EditProfile()
    nick=request.user.username
-   i_d=str(request.user.id)
-   napthe=NapThe.objects.extra(where=["madonhang like '0code%'"])
+   i_d=str(request.user.id)+'code'
    if request.method == 'POST':
       form=EditProfile(request.POST)
       if form.is_valid():
          form.save(nick)
       return HttpResponseRedirect('/')
-   return render(request, 'pages/editprofile.html', {'form': form,'Card':NapThe.objects.extra(where=["madonhang like '"+i_d+"code%'"])})
+   return render(request, 'pages/editprofile.html', {'form': form,'Card':NapThe.objects.filter(madonhang__contains= i_d)})
 def napthe(request):
    form=NapThe_From()
    nick=request.user.username
