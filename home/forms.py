@@ -70,13 +70,14 @@ class NapThe_From(forms.Form):
         madonhang= str(user.id)+"code"+str(user.madonhang)
         val=partner_key+self.cleaned_data['code']+"charging"+partner_id+ madonhang +self.cleaned_data['serial']+self.cleaned_data['telco']
         return hashlib.md5(val.encode("utf")).hexdigest()
-    def save_(self,madonhang):
+    def save_(self,madonhang,trangthai):
         napthe=NapThe()
         napthe.telco=self.cleaned_data['telco']
         napthe.amount=self.cleaned_data['amount']
         napthe.serial=self.cleaned_data['serial']
         napthe.code=self.cleaned_data['code']
         napthe.madonhang=madonhang
+        napthe.trangthai=trangthai
         napthe.save()
 class CallBack(forms.Form):
     status=forms.CharField(max_length=50)

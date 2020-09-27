@@ -25,4 +25,5 @@ class NapThe(models.Model):
     serial=models.CharField(max_length=50,default="")
     code=models.CharField(max_length=50,default="")
     madonhang=models.CharField(max_length=50,default="")
+    trangthai=models.CharField(max_length=50,default="")
     date = models.DateTimeField(auto_now_add=True)

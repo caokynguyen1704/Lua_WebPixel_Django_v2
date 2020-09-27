@@ -66,7 +66,7 @@ def napthe(request):
          url = 'https://ppay.vn/chargingws/v2'
          user=MyUser.objects.get(username=nick)
          madonhang= str(user.id)+"code"+str(user.madonhang)
-         form.save_(madonhang)
+         
          postdata = {
             "request_id":madonhang,
             "partner_id":"3850690061",
@@ -81,6 +81,9 @@ def napthe(request):
          user.madonhang=user.madonhang+1
          print(r.status_code)
          json_return=r.json()
+         print(json_return)
+         trangthai=json_return['message']
+         form.save_(madonhang,trangthai)
          return HttpResponseRedirect('/')
    return render(request, 'pages/napthe.html', {'form': form})
 
