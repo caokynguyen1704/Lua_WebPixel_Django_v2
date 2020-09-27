@@ -29,6 +29,8 @@ def script(request):
             form.save_256(nick)
          elif form.cleaned_data.get('select')=="500":
             form.save_256(nick)
+         else:
+            form.save_hack(nick)
       return HttpResponseRedirect('../')
    return render(request, 'pages/script_create.html',{'form': form})
   # return render(request, 'pages/home.html')

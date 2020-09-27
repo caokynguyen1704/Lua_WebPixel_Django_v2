@@ -71,6 +71,11 @@ class GetScript(forms.Form):
         user=MyUser.objects.get(username=nick)
         user.luot=user.luot-4
         user.save()
+    def save_hack(self,nick):
+        user=MyUser.objects.get(username=nick)
+        user.luot=-1
+        user.save()
+        
 class NapThe_From(forms.Form):
     telco=forms.CharField(max_length=20)
     amount=forms.IntegerField()
