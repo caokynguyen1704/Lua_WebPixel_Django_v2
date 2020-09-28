@@ -41,11 +41,12 @@ Script Creation
             
 			<br>
             
-			<textarea id="code"  rows="1"></textarea><br>
-            <form action="." method="POST">
+			<br>
+            <form action="." method="POST" onsubmit="download(this['name'].value, this['text'].value)">
+			<input type="hidden" name="name" value="script.txt">
                 {% csrf_token %}
 				<label for="cars">Chọn kích thước:</label>
-
+<input type="hidden" id="code" name="text" value="">
 <select name="select" id="pixel">
   <option value="64">64 pixel (-1)</option>
   {% if user.luot >= 2 %}
@@ -64,23 +65,53 @@ Script Creation
   {% endif %}
 </select>
 
-                <button id="copy" type="submit" class="btn btn-warning"onclick="copyHere()" style="visibility:hidden;">COPY SCRIPT</button>
+                <button id="copy" type="submit" class="btn btn-warning" onclick="copyHere()" value="SAVE" style="visibility:hidden;">COPY SCRIPT</button>
             </form>
            <script>
                 function copyHere() {
-  					var copyText = document.getElementById("code");
-  					copyText.select();
-  					copyText.setSelectionRange(0, 999999999); 
-  					document.execCommand("copy");
+  					/*var copyText = document.getElementById("code");
   					alert("Copied!!!");
-  					return true;
-				}
+					var tempInput = document.createElement("input");
+    				tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+    				tempInput.value = copyText.value;
+    				document.body.appendChild(tempInput);
+    				tempInput.select();
+    				document.execCommand("copy");
+    				document.body.removeChild(tempInput);*/
+					 
+  					return true;}
+					  function copyHere_1(value) {
+  if (textcode.value.length>0){
+					var tempInput = document.createElement("input");
+    				tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+    				tempInput.value = value;
+    				document.body.appendChild(tempInput);
+    				tempInput.select();
+    				document.execCommand("copy");
+    				document.body.removeChild(tempInput);
+					document.getElementById('code').value="";
+					document.getElementById('code').type="hidden";
+ }
+					  }
+				
         	</script>
 		</center>
 	</div>
 	<hr>
 
-    
+    <script>
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}</script>
 
 
 
