@@ -12,6 +12,9 @@ Script Creation
 
 {% if user.luot > 0 %}
 {% if user.uid > 1000 %}
+<div class="alert alert-success" role="alert">
+ Vui lòng chọn số pixel trước khi thêm ảnh! 
+</div>
 <input type="hidden" class="uid" value={{user.uid}}>
 <input id="addpic" type='file' onchange="processImage(this,64);" />
 		<center>
