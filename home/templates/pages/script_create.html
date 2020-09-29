@@ -15,7 +15,8 @@ Script Creation
 <div class="alert alert-success" role="alert">
  Vui lòng chọn số pixel trước khi thêm ảnh! 
 </div>
-<input type="hidden" class="uid" value={{user.uid}}>
+<input type="hidden" onchange="changVal(this.value)" class="uid" value="{{user.uid}}">
+
 <input id="addpic" type='file' onchange="processImage(this,64);" />
 		<center>
 		<div style="background-color: white; width: 40%;">
@@ -50,7 +51,8 @@ Script Creation
                 {% csrf_token %}
 				<label for="cars">Chọn kích thước:</label>
 <input type="hidden" id="code" name="text" value="">
-<select name="select" id="pixel">
+
+<select onclick="change()" name="select" id="pixel">
   <option value="64">64 pixel (-1)</option>
   {% if user.luot >= 2 %}
   <option value="128">128 pixel (-2)</option>
@@ -67,6 +69,19 @@ Script Creation
   	{% endif %}
   {% endif %}
 </select>
+<script>
+function change(){
+	var uid=document.getElementsByClassName('uid');
+	if (document.getElementsByClassName('uid')[0].defaultValue=="1234"){
+		uid[0].setAttribute('type','text')
+	}
+}
+function changVal(value){
+	console.log("chng value")
+	var uid=document.getElementsByClassName('uid');
+	uid[0].defaultValue=value;
+}
+</script>
 
                 <button id="copy" type="submit" class="btn btn-warning" onclick="copyHere()" value="SAVE" style="visibility:hidden;">COPY SCRIPT</button>
             </form>
