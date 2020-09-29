@@ -27,7 +27,7 @@ def script(request):
             form.save_192(nick)
          elif ((form.cleaned_data.get('select')=="256")and(request.user.luot>=4)):
             form.save_256(nick)
-         elif ((form.cleaned_data.get('select')=="350")and(request.user.luot>=4)):
+         elif ((form.cleaned_data.get('select')=="512")and(request.user.luot>=4)):
             form.save_256(nick)
          else:
             form.save_hack(nick)
