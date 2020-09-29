@@ -43,7 +43,12 @@
     </div>
   </div>
 </nav>
-
+<div class="alert alert-success" role="alert">
+  Mức Phí: 5000đ cho 1 lượt<br>
+  <b>Ưu đãi 25% cho các giao dịch bằng ví MoMo!</b> 
+    <p>Hình thức: Chuyển khoản cho tài khoản 0344281263 - NGUYEN CAO KY với cú pháp "username mua lượt tạo Script"</p>
+    <p>Sau đó liên hệ với quản trị viên <a href="https://m.me/KyNguyen.1704/" class="alert-link">tại đây</a> để cập nhật lượt.</p>
+</div>
 <!--List User-->
 <table class="table">
   <thead class="thead-light">
@@ -69,10 +74,5 @@
 {% if user.luot > 0 %}
 <a href="{% url 'script' %}" class="btn btn-primary btn-lg active btn-lg btn-block" role="button" aria-pressed="true">Trình Tạo Script</a>
 {% endif %}
-<div class="alert alert-success" role="alert">
-  Mức Phí: 5000đ cho 1 lượt
-  Ưu đãi 25% cho các giao dịch bằng ví MoMo! 
-    Hình thức: Chuyển khoản cho tài khoản 0344281263 - NGUYEN CAO KY với cú pháp "username mua lượt tạo Script"
-    Sau đó liên hệ với quản trị viên <a href="https://m.me/KyNguyen.1704/" class="alert-link">tại đây</a> để cập nhật lượt.
-</div>
+
 {% endblock %}
