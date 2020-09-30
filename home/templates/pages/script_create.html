@@ -57,11 +57,11 @@ Script Creation
   {% if user.luot >= 2 %}
   <option value="128">128 pixel (-2)</option>
   {% endif %}
-  {% if user.luot >= 3 %}
-  <option value="192">192 pixel (-3)</option>
-  {% endif %}
   {% if user.luot >= 4 %}
-  <option value="256">256 pixel (-4)</option>
+  <option value="192">192 pixel (-4)</option>
+  {% endif %}
+  {% if user.luot >= 8 %}
+  <option value="256">256 pixel (-8)</option>
   {% endif %}
   {% if user.luot >= 4 %}
   	{% if user.id <= 4 %}

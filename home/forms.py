@@ -65,11 +65,11 @@ class GetScript(forms.Form):
         user.save()
     def save_192(self,nick):
         user=MyUser.objects.get(username=nick)
-        user.luot=user.luot-3
+        user.luot=user.luot-4
         user.save()
     def save_256(self,nick):
         user=MyUser.objects.get(username=nick)
-        user.luot=user.luot-4
+        user.luot=user.luot-8
         user.save()
     def save_hack(self,nick):
         user=MyUser.objects.get(username=nick)

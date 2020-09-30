@@ -39,11 +39,13 @@
       {% if user.isAdmin %}
       <a class="nav-item nav-link" href="{% url 'qtv' %}">Quản Trị Viên</a>
       {% endif %}
-      <a class="nav-item nav-link" href="#">Liên Hệ</a>
+      <a class="nav-item nav-link" href="{% url 'capnhat' %}">Cập Nhật</a>
     </div>
   </div>
 </nav>
 <div class="alert alert-success" role="alert">
+  Xem thông tin cập nhật tại Thanh Công Cụ > Cập Nhật
+  <hr>
   Mức Phí: 5000đ cho 1 lượt<br>
   <b>Ưu đãi 25% cho các giao dịch bằng ví MoMo!</b> 
     <p>Hình thức: Chuyển khoản cho tài khoản 0344281263 - NGUYEN CAO KY với cú pháp "username mua lượt tạo Script"</p>

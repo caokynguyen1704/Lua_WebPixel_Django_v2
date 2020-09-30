@@ -11,4 +11,5 @@ urlpatterns = [
    path('giveaway/',views.giveaway,name="giveaway"),
    path('napthe/',views.napthe,name='napthe'),
    path('callback/',views.callback,name='callback'),
+   path('capnhat/',views.capnhat,name='capnhat'),
 ]

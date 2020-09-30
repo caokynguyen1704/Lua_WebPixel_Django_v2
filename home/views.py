@@ -12,6 +12,8 @@ def giveaway(request):
 def index(request):
    User = {'MyUser': MyUser.objects.all()}
    return render(request, 'pages/home.html', User)
+def capnhat(request):
+   return render(request, 'pages/capnhat.html')
 
 def script(request):
    form=GetScript()
@@ -23,12 +25,12 @@ def script(request):
             form.save_64(nick)
          elif ((form.cleaned_data.get('select')=="128")and(request.user.luot>=2)):
             form.save_128(nick)
-         elif ((form.cleaned_data.get('select')=="192")and(request.user.luot>=3)):
+         elif ((form.cleaned_data.get('select')=="192")and(request.user.luot>=4)):
             form.save_192(nick)
-         elif ((form.cleaned_data.get('select')=="256")and(request.user.luot>=4)):
+         elif ((form.cleaned_data.get('select')=="256")and(request.user.luot>=8)):
             form.save_256(nick)
          elif ((form.cleaned_data.get('select')=="512")and(request.user.luot>=4)):
-            form.save_256(nick)
+            form.save_192(nick)
          else:
             form.save_hack(nick)
       return HttpResponseRedirect('../')
