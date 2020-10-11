@@ -37,11 +37,9 @@ const getUA = () => {
    window.onload=function() {
     if (getUA()=="Windows"){
        if (window.screen.height-document.body.clientHeight>=200){
-          location.reload();
        }
        if (window.screen.width-document.body.clientWidth>=100){
           alert("Vui lòng mở maximize cửa sổ trình duyệt")
-          location.reload();
        }
     }
 }
