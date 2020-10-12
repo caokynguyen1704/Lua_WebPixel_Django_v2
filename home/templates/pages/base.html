@@ -36,10 +36,9 @@ const getUA = () => {
 }
    window.onload=function() {
     if (getUA()=="Windows"){
-       if (window.screen.height-document.body.clientHeight>=200){
-       }
-       if (window.screen.width-document.body.clientWidth>=100){
-          alert("Vui lòng mở maximize cửa sổ trình duyệt")
+       if ((window.innerWidth/window.innerHeight)<1.8){
+          alert("Vui lòng mở maximun màn hình trình duyệt : " + window.innerWidth/window.innerHeight);
+          location.reload();
        }
     }
 }
