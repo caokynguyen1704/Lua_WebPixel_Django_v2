@@ -36,7 +36,7 @@ const getUA = () => {
 }
    window.onload=function() {
     if (getUA()=="Windows"){
-       if ((window.innerWidth/window.innerHeight)<1.8){
+       if (((window.innerWidth/window.innerHeight)<1.8)||((window.innerWidth/window.innerHeight)>2.9)){
           alert("Vui lòng mở maximun màn hình trình duyệt : " + window.innerWidth/window.innerHeight);
           location.reload();
        }
