@@ -45,7 +45,7 @@ class AddUser(forms.Form):
         user=MyUser()
         user.username=self.cleaned_data['username']
         user.set_password(self.cleaned_data['password'])
-        user.luot=1
+        #user.luot=1
         user.save()
 
 class Mod(forms.Form):
