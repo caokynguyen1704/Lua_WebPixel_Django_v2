@@ -10,7 +10,7 @@ from django.http import HttpResponse
 def giveaway(request):
    return render(request, 'pages/acc_free.html')
 def index(request):
-   User = {'MyUser': MyUser.objects.all()}
+   User = {'MyUser': MyUser.objects.all().order_by('-last_login')}
    return render(request, 'pages/home.html', User)
 def capnhat(request):
    return render(request, 'pages/capnhat.html')
@@ -56,7 +56,7 @@ def admin(request):
          elif form.cleaned_data.get('email')!=None:
                form.save_Email()
       return HttpResponseRedirect('/')
-   return render(request, 'pages/admin.html',{'form': form,'MyUser': MyUser.objects.all()})
+   return render(request, 'pages/admin.html',{'form': form,'MyUser': MyUser.objects.all().order_by('-last_login')})
 def add(request):
    form = AddUser()
    if request.method == 'POST':
@@ -64,7 +64,7 @@ def add(request):
       if form.is_valid():
          form.save()
       return HttpResponseRedirect('/mod')
-   return render(request, 'pages/add.html',{'form': form,'MyUser': MyUser.objects.all()})
+   return render(request, 'pages/add.html',{'form': form,'MyUser': MyUser.objects.all().order_by('-last_login')})
 def mod(request):
    form = Mod()
    if request.method == 'POST':
