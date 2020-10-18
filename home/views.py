@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.db import models
 from home.models import MyUser,CallBackModel,NapThe
-from home.forms import AdminEdit,EditProfile,GetScript,NapThe_From,CallBack
+from home.forms import AdminEdit,EditProfile,GetScript,NapThe_From,CallBack,Mod,AddUser
 from django.http import HttpResponseRedirect 
 import requests
 import json
@@ -57,6 +57,29 @@ def admin(request):
                form.save_Email()
       return HttpResponseRedirect('/')
    return render(request, 'pages/admin.html',{'form': form,'MyUser': MyUser.objects.all()})
+def add(request):
+   form = AddUser()
+   if request.method == 'POST':
+      form=AddUser(request.POST)
+      if form.is_valid():
+         form.save()
+      return HttpResponseRedirect('/mod')
+   return render(request, 'pages/add.html',{'form': form,'MyUser': MyUser.objects.all()})
+def mod(request):
+   form = Mod()
+   if request.method == 'POST':
+      form=Mod(request.POST)
+      if form.is_valid():
+         print("ok")
+      else:
+         if form.cleaned_data.get('name')!=None:
+            form.save_Name()
+         elif form.cleaned_data.get('username')!=None:
+               form.save_Username()
+         elif form.cleaned_data.get('password')!=None:
+               form.save_Pass()
+      return HttpResponseRedirect('/mod')
+   return render(request, 'pages/mod.html',{'form': form,'MyUser': MyUser.objects.all()})
 
 def edit_profile(request):
    

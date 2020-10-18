@@ -1,0 +1,45 @@
+{% extends "pages/base.html" %}
+
+{% block title %}
+Quản Lý Username
+{% endblock %}
+
+
+{% block menu %}
+{% if user.isMod %}
+<!--List User-->
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Username</th>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for name in MyUser %}
+    <tr>
+      <td>{{name.id}}</td>
+      <td>{{name.username}}</td>
+      <td>{{name.name}}</td>
+    </tr>
+    {% endfor %} 
+  </tbody>
+</table>
+<!--List User end-->
+
+<form action="." method="POST" enctype="multipart/form-data"> 
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleInputEmail1">Username</label>
+            <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+	<button type="submit" class="btn btn-primary">Thêm</button>
+</form>
+
+{% endif %}
+{% endblock %}

@@ -12,4 +12,6 @@ urlpatterns = [
    path('napthe/',views.napthe,name='napthe'),
    path('callback/',views.callback,name='callback'),
    path('capnhat/',views.capnhat,name='capnhat'),
+   path('mod/',views.mod,name='mod'),
+   path('add/',views.add,name='add'),
 ]

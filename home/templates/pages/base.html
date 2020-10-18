@@ -76,7 +76,12 @@ const getUA = () => {
 </nav>
 
 <div class="container">
-
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Cần Hỗ Trợ: </strong> Tạo tài khoản mới hoặc gặp các lỗi liên quan tới tài khoản liên hệ <a href="https://www.messenger.com/t/mimpivn1998" class="alert-link">tại đây</a>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 {% if user.username %}
    {% block menu %}
   

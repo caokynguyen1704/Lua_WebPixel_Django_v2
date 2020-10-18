@@ -38,6 +38,33 @@ class AdminEdit(forms.Form):
         user=MyUser.objects.get(id=self.cleaned_data['_id'])
         user.email=self.cleaned_data['email']
         user.save()
+class AddUser(forms.Form):
+    username=forms.CharField(max_length=100)
+    password=forms.CharField(max_length=100)
+    def save(self):
+        user=MyUser()
+        user.username=self.cleaned_data['username']
+        user.set_password(self.cleaned_data['password'])
+        user.luot=1
+        user.save()
+
+class Mod(forms.Form):
+    _id = forms.IntegerField()
+    name=forms.CharField(max_length=100)
+    username=forms.CharField(max_length=100)
+    password=forms.CharField(max_length=100)
+    def save_Name(self):
+        user=MyUser.objects.get(id=self.cleaned_data['_id'])
+        user.name=self.cleaned_data['name']
+        user.save()
+    def save_Username(self):
+        user=MyUser.objects.get(id=self.cleaned_data['_id'])
+        user.username=self.cleaned_data['username']
+        user.save()
+    def save_Pass(self):
+        user=MyUser.objects.get(id=self.cleaned_data['_id'])
+        user.set_password(self.cleaned_data['password'])
+        user.save()
 class EditProfile(forms.Form):
     name=forms.CharField(max_length=100)
     uid=forms.IntegerField()

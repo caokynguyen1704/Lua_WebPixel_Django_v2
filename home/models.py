@@ -7,6 +7,7 @@ class MyUser(AbstractUser):
     name=models.CharField(max_length=100,default="")
     uid=models.IntegerField(default=0)
     isAdmin = models.BooleanField(default=False)
+    isMod = models.BooleanField(default=False)
     madonhang=models.IntegerField(default=0) 
 class CallBackModel(models.Model):
     status=models.CharField(max_length=50,default="")
