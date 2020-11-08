@@ -168,7 +168,7 @@ def callback(request):
       card.save()
       id_user = int(mdh[0:mdh.find("code")])
       user=MyUser.objects.get(id=id_user)
-      user.luot=user.luot + (round(int(am)/5000))*1.5
+      user.luot=user.luot + (round(int(am)/5000))
       user.save()
       
       return HttpResponse(js, content_type='application/json')
