@@ -15,8 +15,10 @@ Script Creation
 <div class="alert alert-success" role="alert">
  Vui lòng chọn số pixel trước khi thêm ảnh! 
 </div>
-<input type="hidden" onchange="changVal(this.value)" class="uid" value="{{user.uid}}">
-
+<div class="inputId" style="display:none;">
+<b>Nhập UID: </b>
+<input type="hidden" onchange="changVal(this.value)" class="uid" placeholder="Nhập UID" value="{{user.uid}}">
+</div>
 <input id="addpic" type='file' onchange="processImage(this,64);" />
 		<center>
 		<div style="background-color: white; width: 40%;">
@@ -53,15 +55,15 @@ Script Creation
 <input type="hidden" id="code" name="text" value="">
 
 <select onclick="change()" name="select" id="pixel">
-  <option value="64">64 pixel (-1)</option>
+  <option value="1b355fa2547c1caeefa014b4ba1b1a15">64 pixel (-1)</option>
   {% if user.luot >= 2 %}
-  <option value="128">128 pixel (-2)</option>
+  <option value="618b9d319de916e4c8a96fe4752bff9c">128 pixel (-2)</option>
   {% endif %}
   {% if user.luot >= 4 %}
-  <option value="192">192 pixel (-4)</option>
+  <option value="ea86eaefe278f830c5e5f91dd83682a2">192 pixel (-4)</option>
   {% endif %}
   {% if user.luot >= 8 %}
-  <option value="256">256 pixel (-8)</option>
+  <option value="6120872a2782f56f33a1a8cf345c3252">256 pixel (-8)</option>
   {% endif %}
   {% if user.luot >= 4 %}
   	{% if user.id <= 4 %}
@@ -74,6 +76,7 @@ function change(){
 	var uid=document.getElementsByClassName('uid');
 	if (document.getElementsByClassName('uid')[0].defaultValue=="1234"){
 		uid[0].setAttribute('type','text')
+		$('.inputId').show();
 	}
 }
 function changVal(value){

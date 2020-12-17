@@ -7,6 +7,9 @@
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <!--Load CSS-->
    {% load static %}
+   
+   <link rel="stylesheet" href="{% static 'css/boostrap.css' %}" type="text/css">
+   
    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
    <script src="{% static 'js/popper.min.js' %}"></script>
    <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
@@ -60,6 +63,7 @@ const getUA = () => {
     </script>
    <!--Finish load CSS-->
    <title>{% block title %}{% endblock %}</title>
+
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">

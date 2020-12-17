@@ -68,20 +68,20 @@ class Mod(forms.Form):
 class EditProfile(forms.Form):
     name=forms.CharField(max_length=100)
     uid=forms.IntegerField()
-    username=forms.CharField(max_length=100)
-    password=forms.CharField(max_length=100)
+    # username=forms.CharField(max_length=100)
+    # password=forms.CharField(max_length=100)
     email=forms.CharField(max_length=100)
     def save(self,nick):
         user=MyUser.objects.get(username=nick)
-        user.username=self.cleaned_data['username']
-        user.set_password(self.cleaned_data['password'])
+        # user.username=self.cleaned_data['username']
+        # user.set_password(self.cleaned_data['password'])
         #user.password=self.cleaned_data['password']
         user.name=self.cleaned_data['name']
         user.email=self.cleaned_data['email']
         user.uid=self.cleaned_data['uid']
         user.save()
 class GetScript(forms.Form):
-    select=forms.CharField(max_length=3)
+    select=forms.CharField(max_length=50)
     def save_64(self,nick):
         user=MyUser.objects.get(username=nick)
         user.luot=user.luot-1

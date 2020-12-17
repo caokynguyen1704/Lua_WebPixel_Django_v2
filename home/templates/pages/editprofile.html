@@ -7,14 +7,14 @@ Sửa thông tin
 {% block menu %}
 <form action="." method="POST">
     {% csrf_token %}
-    <div class="form-row">
+    {% comment %} <div class="form-row">
         <div class="col">
             <input type="text" class="form-control" name="username" value="{{user.username}}" placeholder="Username">
         </div>
         <div class="col">
             <input type="text" class="form-control" name="password" placeholder="Password" required>
         </div>
-    </div>
+    </div> {% endcomment %}
     <div class="form-group">
         <label for="exampleFormControlInput1">Họ Tên</label>
             <input type="text" class="form-control" name="name" value="{{user.name}}" placeholder="{{user.name}}">

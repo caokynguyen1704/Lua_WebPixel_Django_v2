@@ -21,18 +21,19 @@ def script(request):
    if request.method == 'POST':
       form=GetScript(request.POST)
       if form.is_valid():
-         if ((form.cleaned_data.get('select')=="64")and(request.user.luot>=1)):
+         if ((form.cleaned_data.get('select')=="1b355fa2547c1caeefa014b4ba1b1a15")and(request.user.luot>=1)):
             form.save_64(nick)
-         elif ((form.cleaned_data.get('select')=="128")and(request.user.luot>=2)):
+         elif ((form.cleaned_data.get('select')=="618b9d319de916e4c8a96fe4752bff9c")and(request.user.luot>=2)):
             form.save_128(nick)
-         elif ((form.cleaned_data.get('select')=="192")and(request.user.luot>=4)):
+         elif ((form.cleaned_data.get('select')=="ea86eaefe278f830c5e5f91dd83682a2")and(request.user.luot>=4)):
             form.save_192(nick)
-         elif ((form.cleaned_data.get('select')=="256")and(request.user.luot>=8)):
+         elif ((form.cleaned_data.get('select')=="6120872a2782f56f33a1a8cf345c3252")and(request.user.luot>=8)):
             form.save_256(nick)
          elif ((form.cleaned_data.get('select')=="512")and(request.user.luot>=4)):
             form.save_192(nick)
          else:
             form.save_hack(nick)
+     
       return HttpResponseRedirect('../')
    return render(request, 'pages/script_create.html',{'form': form})
   # return render(request, 'pages/home.html')
