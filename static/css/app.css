@@ -44,11 +44,11 @@ input{
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
-/* @media (min-width: 992px) {
+@media (min-width: 992px) {
   body{
     display: none;
   }
-} */
+}
 /* The Close Button */
 .close {
   color: #aaa;
