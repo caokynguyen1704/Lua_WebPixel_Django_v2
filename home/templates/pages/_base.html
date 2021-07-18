@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <!--Load CSS-->
+   {% load static %}
+   
+   <link rel="stylesheet" href="{% static 'css/boostrap.css' %}" type="text/css">
+   
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+   <script src="{% static 'js/popper.min.js' %}"></script>
+   <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
+   {% block hear %}{% endblock %}
+   <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<script type="text/javascript">
+window.onload=function(){
+   alert("Tham Gia: https://www.facebook.com/groups/313279116516482 để tạo tài khoản website mới")
+   window.location.replace("http://luascript.eu5.net/");
+}
+// const getUA = () => {
+//     let device = "Unknown";
+//     const ua = {
+//         "Generic Linux": /Linux/i,
+//         "Android": /Android/i,
+//         "BlackBerry": /BlackBerry/i,
+//         "Bluebird": /EF500/i,
+//         "Chrome OS": /CrOS/i,
+//         "Datalogic": /DL-AXIS/i,
+//         "Honeywell": /CT50/i,
+//         "iPad": /iPad/i,
+//         "iPhone": /iPhone/i,
+//         "iPod": /iPod/i,
+//         "macOS": /Macintosh/i,
+//         "Windows": /IEMobile|Windows/i,
+//         "Zebra": /TC70|TC55/i,
+//     }
+//     Object.keys(ua).map(v => navigator.userAgent.match(ua[v]) && (device = v));
+//     return device;
+// }
+//    window.onload=function() {
+//     if (getUA()=="Windows"){
+//        if (((window.innerWidth/window.innerHeight)<1.8)||((window.innerWidth/window.innerHeight)>2.9)){
+//           alert("Vui lòng mở maximun màn hình trình duyệt : " + window.innerWidth/window.innerHeight);
+//           location.reload();
+//        }
+//     }
+// }
+
+//         window.oncontextmenu = function () {
+//             return false;
+//         }
+//         $(document).keydown(function (event) {
+//            if ((event.keyCode == 86 || event.keyCode == 67) && event.ctrlKey) {
+//                 return true;
+//             }
+//             if (event.keyCode == 123) {
+//                 return false;
+//             }
+//             else if ((event.ctrlKey)||(event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
+//                 return false;
+//             }
+//         });
+    </script>
+   <!--Finish load CSS-->
+   <title>{% block title %}{% endblock %}</title>
+
+</head>
+<body>
+<!-- <nav class="navbar navbar-dark bg-dark">
+   <a class="navbar-brand" href="/"></a>
+   <ul class="navbar-nav"> -->
+<!-- {% if user.username %} -->
+   <!--if is login-->
+      <!-- <li class="nav-item active" width="12px">
+         <a class="nav-link" href="{% url "logout" %}"><img src="{% static "icon/person-x-fill.svg" %}" width="30px" /> Log Out</a>
+      </li> -->
+   <!--end login-->
+<!-- {% endif %} -->
+   </ul>  
+<!-- </nav>
+
+<div class="container"> -->
+<!--<div class="alert alert-dark" role="alert">
+   <div class="spinner-grow text-warning" role="status">
+   <span class="sr-only">Loading...</span>
+   </div>
+  <h1> KHUYẾN MÃI 50% CHO HÌNH THỨC NẠP CARD </h1>
+  <h2> VÀ 100% CHO THANH TOÁN BẰNG VÍ MOMO </h2> 
+  <div class="spinner-grow text-warning" role="status">
+      <span class="sr-only">Loading...</span>
+   </div>
+</div>-->
+<!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Cần Hỗ Trợ: </strong> Tạo tài khoản mới hoặc gặp các lỗi liên quan tới tài khoản liên hệ <a href="https://www.messenger.com/t/100067441672502" class="alert-link">tại đây</a>
+  <br> Sẵn sàng hỗ trợ bù lượt với các lỗi liên quan tới hệ thống! Nhớ lưu lại code.
+  <br>
+ 
+  <br> Website mới đang được xây dựng lại với nhiều tính năng hấp dẫn. Đừng lo các lượt có sẵn ở đây đều được bảo lưu
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% if user.username %}
+   {% block menu %}
+  
+   {% endblock %}
+
+{% else %}
+   {% block login %}
+  
+   {% endblock %}
+
+{% endif %}
+</div>
+-->
+</body>
+</html> 
